@@ -5,6 +5,7 @@ import requests
 
 st.title("Reel-Sage: Your Personalized Movie Guide")
 
+
 def footer():
     myargs = """
         \n\n\n\n
@@ -15,7 +16,6 @@ def footer():
         \nEmail: 'prakhardeep173@gmail.com'
     """
     st.write(myargs)
-
 
 
 def get_movie_id(movie_name):
@@ -64,11 +64,7 @@ dataframe = pd.read_csv('../Datasets/dataframe_movies.csv')
 list_of_movies = dataframe['title']
 movie = st.selectbox("Select the movie:", dataframe['title'])
 
-similarity = pickle.load(open(r"C:\Users\prakh\OneDrive\Desktop\Python project\Movie-recommed-system\jupyter_file\similarity.pkl", "rb"))
-
-
-
-
+similarity = pickle.load(open(r"../jupyter_file/similarity.pkl", "rb"))
 
 if st.button("Recommend Movie"):
     st.write("Selected movie")
@@ -76,10 +72,5 @@ if st.button("Recommend Movie"):
     # st.image(fetch_movie_poster(get_movie_id(movie)))
     st.write("Top 5 Similar movies:")
     movie_name, movie_poster = recommend_movie(movie)
-    display_images_in_columns(movie_name,movie_poster,3)
+    display_images_in_columns(movie_name, movie_poster, 3)
     footer()
-
-
-
-
-
